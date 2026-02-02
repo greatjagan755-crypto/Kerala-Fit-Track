@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Calculator - Fat Loss Planner</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="bg-shape shape-1"></div>
+    <div class="bg-shape shape-2"></div>
+
+    <div class="app-container">
+
+        <div class="glass-card fade-in">
+            <header>
+                <h1>BMI Calculator</h1>
+                <p>Check your Body Mass Index</p>
+                <div class="nav-grid">
+                    <a href="index.html" class="btn-nav back-btn">← Back to Planner</a>
+                </div>
+            </header>
+
+            <form id="bmiForm" style="max-width: 500px; margin: 0 auto;">
+                <div class="form-grid" style="grid-template-columns: 1fr;">
+                    <div class="input-group">
+                        <label>Height (cm)</label>
+                        <input type="number" id="bmiHeight" placeholder="170" min="50" max="300" required>
+                    </div>
+                    <div class="input-group">
+                        <label>Weight (kg)</label>
+                        <input type="number" id="bmiWeight" placeholder="70" min="10" max="300" required>
+                    </div>
+                </div>
+                <button type="submit" class="btn-primary" style="margin-top: 1.5rem;">Calculate BMI</button>
+            </form>
+
+            <div id="bmiResultSection" class="hidden"
+                style="margin-top: 2.5rem; text-align: center; padding-top: 2rem; border-top: 1px solid rgba(0,0,0,0.1);">
+                <div style="font-size: 1.1rem; color: #555;">Your BMI is</div>
+                <div class="calories-box" style="margin: 1rem 0;">
+                    <h2 id="bmiValue">22.5</h2>
+                </div>
+                <div style="font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem;" id="bmiCategory">Normal Weight
+                </div>
+                <p id="bmiTip" style="color: #666; max-width: 400px; margin: 0 auto; line-height: 1.6;">Great job!
+                    Maintain your balanced diet and activity.</p>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

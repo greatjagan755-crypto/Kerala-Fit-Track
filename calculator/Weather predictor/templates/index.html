@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kerala Weather Predictor</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="background-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <div class="glass-container">
+        <header>
+            <h1>Kerala Weather Predictor</h1>
+            <p>Accurate forecasts for God's Own Country</p>
+        </header>
+
+        <!-- Search Section -->
+        <div class="search-section">
+            <div class="input-group">
+                <input type="text" id="city-input" placeholder="Enter city name (e.g., Kochi)">
+                <button id="search-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                </button>
+            </div>
+            <div class="quick-cities">
+                <button class="chip" onclick="searchCity('Thiruvananthapuram')">Trivandrum</button>
+                <button class="chip" onclick="searchCity('Kochi')">Kochi</button>
+                <button class="chip" onclick="searchCity('Kozhikode')">Kozhikode</button>
+                <button class="chip" onclick="searchCity('Munnar')">Munnar</button>
+            </div>
+        </div>
+
+        <!-- Main Display -->
+        <div id="weather-display" class="weather-display hidden">
+            <!-- Current Weather Card -->
+            <div class="current-card">
+                <div class="weather-header">
+                    <h2 id="city-name">--</h2>
+                    <span id="date-time">--</span>
+                </div>
+                <div class="weather-main">
+                    <div class="temp-container">
+                        <span id="temperature" class="temp">--°</span>
+                        <div class="weather-icon-container">
+                            <img id="weather-icon" src="" alt="Weather Icon">
+                            <span id="weather-desc">--</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="weather-details">
+                    <div class="detail-item">
+                        <span class="label">Humidity</span>
+                        <span class="value" id="humidity">--%</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="label">Wind</span>
+                        <span class="value" id="wind-speed">-- m/s</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="label">Clouds</span>
+                        <span class="value" id="clouds">--%</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Forecast Section -->
+            <div class="forecast-section">
+                <h3>Next 5 Hours Forecast</h3>
+                <div class="chart-container">
+                    <canvas id="forecastChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- History Section -->
+        <div class="history-section">
+            <h3>Recent Searches</h3>
+            <ul id="history-list">
+                <!-- History items will be populated here -->
+            </ul>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
